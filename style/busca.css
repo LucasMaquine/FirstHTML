@@ -76,7 +76,6 @@
       color: #00416b;
       text-decoration: none;
       margin-left: 30px;
-      color: black;
       text-decoration: none;
       font-family: Arial, Helvetica, sans-serif;
       font-size: 18px;
@@ -100,19 +99,15 @@
     padding-top: 5px;
 }
 
-  #lucas{
-      color: #555577;
-      padding-right: 110px;
-      text-align: center;
-  }
-
  #insta, #face, #git{
      text-decoration: none;
      padding-left: 10px;
+     color: #00416b;
  }
 
  #insta:hover, #face:hover, #git:hover{
         color: black;
+        text-decoration: underline;
 }
 
  #rodapein{

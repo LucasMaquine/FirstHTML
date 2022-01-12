@@ -13,6 +13,7 @@
 <body>
     
     
+    <!--Painel-->
     <div id="topo">      
         <div class="container">         
             <div class="row">            
@@ -28,6 +29,7 @@
         </div>     
     </div>
 
+    <!--Parte onde pede para digitar o CEP-->
     <div id="meio">
         <div class="container">
             <div class="row">
@@ -49,6 +51,8 @@
         </div>
     </div>
 
+
+    <!--Quando o CEP é inválido-->
     <div id="invalido">
         <div class="container">
             <div class="row">
@@ -60,6 +64,8 @@
         </div>
     </div>
 
+
+    <!--Tela de carregamento da transição-->
   <div id="carregando">
     <div class="container">
         <div class="row">
@@ -69,7 +75,7 @@
     </div>
   </div>
     
-
+    <!--Quando o usuário digita o CEP, e aperece os dados.-->
     <div id="meio-oculto">
         <div class="container">
             <div class="row">
@@ -95,6 +101,8 @@
         </div>
     </div>
 
+
+    <!--Rodapé-->
     <div id="rodape">
         <div class="container">
            <div class="row">
@@ -117,24 +125,30 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
     <script>
+
+        //Botão de Buscar o CEP
         document.querySelector("#botao").addEventListener("click", function(){
 
             var cep = document.querySelector("#cep").value;
             fetch("https://viacep.com.br/ws/" + cep + "/json/")
                 .then(response => response.json())
                    .then(response => {
-                if(response.erro === true){
-                    document.querySelector("#meio").style.display = 'none'
-                    document.querySelector("#invalido").style.display = 'block'
-                    document.querySelector('#rodape').style.display = 'none'
+                
+                
+                //Se o CEP for inválido
+                    if(response.erro === true){
+                        document.querySelector("#meio").style.display = 'none'
+                        document.querySelector("#invalido").style.display = 'block'
+                        document.querySelector('#rodape').style.display = 'none'
 
-                    document.querySelector("#botao3").addEventListener("click", function(){
+                        document.querySelector("#botao3").addEventListener("click", function(){
                         document.querySelector("#invalido").style.display = 'none'
                         document.querySelector("#meio").style.display = 'block'
                         document.querySelector('#rodape').style.display = 'block'
                     });
 
-            }else{
+            //Se o CEP existir
+               }else{
                     document.querySelector("#carregando").style.display = 'block'
                     document.querySelector('#rodape').style.display = 'none'
                     document.querySelector("#meio").style.display = 'none'
@@ -157,9 +171,9 @@
                      document.querySelector("#meio-oculto").style.display = 'none'
                      document.querySelector('#rodape').style.display = 'block'
                     });
-            }         
-        });            
-    });         
+                 }         
+            });            
+        });         
 
         
 
